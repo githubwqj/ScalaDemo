@@ -15,6 +15,13 @@ object methodScala {
   }
 
   def main(args: Array[String]): Unit = {
-    print(m1(3,4))
+    print(m2(func))
   }
+
+
+  def m2 (f:Int => Int ): Int ={
+
+    f(3)
+  }
+  val func = (x : Int) => x*100
 }
