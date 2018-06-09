@@ -46,7 +46,7 @@ object SingleWordCount {
 
     println(c2)
 
-    val c3=lines.flatMap(_.split(" ")).map((_,1)).groupBy(_._1).mapValues(t =>t.reduce(_._2+_._2))
+//    val c3=lines.flatMap(_.split(" ")).map((_,1)).groupBy(_._1).mapValues(t =>t.reduce()
 
 //    print(c3)
   }
