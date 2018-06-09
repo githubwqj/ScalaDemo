@@ -39,12 +39,15 @@ object SingleWordCount {
 
     //简陋方法
     val c1=lines.flatMap(_.split(" ")).map((_,1)).groupBy(_._1).mapValues(t => t.size)
-    println(c1)
+//    println(c1)
 //    print(lines.flatMap(_.split(" ")).map((_,1)).groupBy(_._1))
     //升级方法
     val c2=lines.flatMap(_.split(" ")).map((_,1)).groupBy(_._1).mapValues(t =>t.foldLeft(0)(_+_._2))
 
-    println(c2)
+//    println(c2)
+
+    val c3=c2.toArray.sortBy(_._2).reverse.map(t => (t._2,t._1))
+    print(c3.toBuffer)
 
 //    val c3=lines.flatMap(_.split(" ")).map((_,1)).groupBy(_._1).mapValues(t =>t.reduce()
 
