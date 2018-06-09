@@ -18,6 +18,7 @@ object SingleWordCount {
 
     //一个简便方法
     val words = lines.flatMap(_.split(" "))
+
     //将其变成map
     val wordmaps = words.map((_, 1))
 
@@ -25,6 +26,28 @@ object SingleWordCount {
     val wordcountmap = wordmaps.groupBy(_._1);
     val wordcount = wordcountmap.map(t => (t._1, t._2.size))
     val endresult = wordcount.toList.sortBy(_._2).reverse
-    println(endresult)
+//    println(endresult)
+
+
+    val b=List(1,2,3,4,5,6,7)
+//    println(b.toArray.reduce(_+_))
+//    println(b.fold(10)(_+_))
+//    println(b.par.fold(0)(_+_))
+//    //并行计算
+//    println(b.par.fold(10)(_+_))
+
+
+    //简陋方法
+    val c1=lines.flatMap(_.split(" ")).map((_,1)).groupBy(_._1).mapValues(t => t.size)
+    println(c1)
+//    print(lines.flatMap(_.split(" ")).map((_,1)).groupBy(_._1))
+    //升级方法
+    val c2=lines.flatMap(_.split(" ")).map((_,1)).groupBy(_._1).mapValues(t =>t.foldLeft(0)(_+_._2))
+
+    println(c2)
+
+    val c3=lines.flatMap(_.split(" ")).map((_,1)).groupBy(_._1).mapValues(t =>t.reduce(_._2+_._2))
+
+//    print(c3)
   }
 }
