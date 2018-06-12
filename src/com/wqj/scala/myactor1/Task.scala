@@ -10,7 +10,7 @@ import scala.io.Source
   * @Date: 2018/6/12 16:10
   * @Description: //已经被废弃
   *
-  *              !	发送异步消息，没有返回值。
+  *               !	发送异步消息，没有返回值。
   *               !?	发送同步消息，等待返回值。
   *               !!	发送异步消息，返回值是 Future[Any]。
   *
@@ -55,19 +55,19 @@ object ActorWordCount {
     //异步 返回feature
     val fea = actor.start() !! SubmitTask(f, 1)
 
-//    replySet += fea
+    //    replySet += fea
 
 
   }
 
 
-  while(replySet.size>0){
+  while (replySet.size > 0) {
     //是否完成
-    val toCompute =replySet.filter(_.isCompleted)
+    val toCompute = replySet.filter(_.isCompleted)
 
-    for(tc <- toCompute){
+    for (tc <- toCompute) {
       //强转
-//      tc.apply().asInstanceOf(ResultTask)
+      //      tc.apply().asInstanceOf(ResultTask)
 
       //处理之后 将这个元素删除掉,知道while循环为空的时候  结束这次,将数据汇总
     }
